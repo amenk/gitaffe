@@ -1,9 +1,10 @@
 subhash=false
+current_ts=$(date -u +%s)
 while [ "$subhash" != "affe"  ]
 do
-	GIT_COMMITTER_DATE="Wed Feb 16 14:00:01 2011 +0100" git commit --amend -m "monkey=$i" > /dev/null
-	i=$[$i+1]
+	GIT_COMMITTER_DATE=date -d @$current_ts git commit --amend -m "monkey=$i" > /dev/null
+	current_ts=$[$current_ts+1]
 	hash=`git rev-parse HEAD`
-	subhash=${hash:0:4}}
-	echo $subhash;
+	subhash=${hash:0:4}
 done
+echo $hash
