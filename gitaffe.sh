@@ -1,4 +1,5 @@
-message=`git log -1 --pretty=%B"`
+#!/bin/bash
+message=`git log -1 --pretty=%B`
 subhash=false
 current_ts=$(date -u +%s)
 while [ "$subhash" != "affe"  ]
@@ -8,4 +9,6 @@ do
 	hash=`git rev-parse HEAD`
 	subhash=${hash:0:4}
 done
+git gc
 echo $hash
+
